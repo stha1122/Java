@@ -39,7 +39,7 @@ public class basicCalculator {
 			return;
 		}
 		else {
-			System.out.println("Invalid operatin.Try again.");
+			System.out.println("Invalid operation,try again.");
 		}
 		}
 	}
