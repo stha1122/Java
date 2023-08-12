@@ -275,5 +275,17 @@ public class LinkedList {
         }
         return c1;
     }
+	public boolean detectCycle() {
+	node fast=head;
+	node slow=head;
+	while(fast!=null && fast.next!=null) {
+		fast=fast.next.next;
+		slow=slow.next;
+		if(fast==slow) {
+			return true;
+		}
+	}
+	return false;
+}
 
 }
