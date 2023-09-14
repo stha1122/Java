@@ -123,4 +123,27 @@ public class BTree {
 		return self && L && R;
 	
 	}
+	public BinaryTree(int[] lvl) {
+		// TODO Auto-generated constructor stub
+		int idx = 0;
+		root = new Node(lvl[idx]);
+		Queue<Node> Q = new LinkedList<>();
+		Q.add(root);
+
+		idx++;
+		while (idx < lvl.length && !Q.isEmpty()) {
+			Node curr = Q.poll();
+			if (lvl[idx] != -1) {
+				curr.left = new Node(lvl[idx]);
+				Q.add(curr.left);
+			}
+			idx++;
+			if (lvl[idx] != -1) {
+				curr.right = new Node(lvl[idx]);
+				Q.add(curr.left);
+			}
+			idx++;
+
+		}
+	}
 }
