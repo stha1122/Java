@@ -146,4 +146,20 @@ public class BTree {
 
 		}
 	}
+	public BinaryTree(int[] pre, int o) {
+
+		int pidx =0;
+	}
+	int pidx =0;
+	private Node createPre(int[] pre) {
+		if(pre[pidx]==-1) {
+			pidx++;
+			return null;
+		}
+		Node nn = new Node(pre[pidx]);
+		pidx++;
+		nn.left = createPre(pre);
+		nn.right = createPre(pre);
+		return nn;
+	}
 }
