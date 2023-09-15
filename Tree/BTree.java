@@ -162,4 +162,33 @@ public class BTree {
 		nn.right = createPre(pre);
 		return nn;
 	}
+	public int isBST() {
+		return isBST(root);
+	}
+		class pairBST{
+		boolean b = true;
+		int max=Integer.MIN_VALUE;
+		int min=Integer.MAX_VALUE;
+	}
+	private pairBST isBST(Node nn) {
+		if(nn==null) {
+			return new pairBST();		}
+	
+	pairBST L =isBST(nn.left);
+	pairBST R = isBST(nn.right);
+	pairBST ans = new pairBST();
+	
+//	isBST?
+	boolean self = L.max < nn.data && nn.data < R.min;
+	ans.b = self && L.b && R.b;
+	
+//	min!!
+	ans.min = Math.min(L.min, nn.data);
+	
+//	max!!
+	ans.max = Math.max(R.max, nn.data);
+	
+	return ans;
+	}
+
 }
