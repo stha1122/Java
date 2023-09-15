@@ -84,6 +84,22 @@ public class BST {
 				return Find(nn.right, aloo);
 			}
 		}
+
+	public void Add(int aloo) {
+		root = Add(root, aloo);
+	}
+
+	private Node Add(Node nn, int aloo) {
+		if (nn == null) {
+			return new Node(aloo);
+		}
+		if (nn.data >= aloo) {
+			nn.left = Add(nn.left, aloo);
+		} else {
+			nn.right = Add(nn.right, aloo);
+		}
+		return nn;
+	}
 		
 	}
 
