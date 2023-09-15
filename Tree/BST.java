@@ -66,7 +66,24 @@ public class BST {
 			System.out.println();
 		}
 		
-		
+		public boolean Find(int alo) {
+			return Find(root, alo);
+		}
+
+		private boolean Find(Node nn, int aloo) {
+			if (nn == null) {
+				return false;
+			}
+			if (nn.data == aloo) {
+				return true;
+			}
+			if (nn.data > aloo) {
+				return Find(nn.left, aloo);
+
+			} else {
+				return Find(nn.right, aloo);
+			}
+		}
 		
 	}
 
