@@ -58,13 +58,6 @@ public class BST {
 
 			return nn;
 		}
-		private void print(int[] arr, int s, int e) {
-			for(int idx =s;idx<=e;idx++) {
-				System.out.print(arr[idx]+ " ");
-				
-			}
-			System.out.println();
-		}
 		
 		public boolean Find(int alo) {
 			return Find(root, alo);
@@ -97,6 +90,51 @@ public class BST {
 			nn.left = Add(nn.left, aloo);
 		} else {
 			nn.right = Add(nn.right, aloo);
+		}
+		return nn;
+	}
+
+	public int Max() {
+		return Max(root);
+	}
+
+	private int Max(Node nn) {
+		if (nn.right == null) {
+			return nn.data;
+		}
+		return Max(nn.right);
+	}
+
+
+	public void remove(int ali){
+		root=remove(root,ali);
+	}
+	
+	private Node remove(Node nn, int aloo) {
+		if (nn.data > aloo) {
+			nn.left = remove(nn.left, aloo);
+		} else if (nn.data < aloo) {
+			nn.right = remove(nn.right, aloo);
+		} else {
+//			case 1: aloo is leaf Node!!
+			if (nn.left == null && nn.right == null) {
+				return null;
+			}
+//			case 2: aloo has only a single child!!
+			if (nn.left == null && nn.right != null) {
+				return nn.right;
+			}
+			if (nn.left != null && nn.right == null) {
+				return nn.left;
+			}
+//			case 3: has both children!!
+			if (nn.left != null && nn.right != null) {
+//				update nn.data to left sub tree ka max ya fir 
+//				right sub tree ka min!!
+				int max = Max(nn.left);
+				nn.data = max;
+				nn.left = remove(nn.left, aloo);
+			}
 		}
 		return nn;
 	}
