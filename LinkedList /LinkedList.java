@@ -6,7 +6,7 @@ class node{
 		// TODO Auto-generated constructor stub
 		data=ali;
 	}
-	int dat;
+	int data;
 	node next;
 }
 
