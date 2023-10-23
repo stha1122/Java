@@ -19,20 +19,40 @@ public class min_concat {
 			AL.add(idx);
 			HM.put(s.charAt(idx), AL);
 			}
-		int prev = -1;
+		int last_char_idx= -1;
 		int ans = 1;
 		System.out.println(HM);
 		for(int idx=0;idx<t.length();idx++) {
 			char ch = t.charAt(idx);
 			ArrayList<Integer> AL = HM.get(ch);
-//			apply BS and get the number just bigger than ans
-		for(int i:AL) {
-			if(i>prev) {
-				prev=i;
-				break;
+			if(AL == null) {
+				return;
 			}
+//			apply BS and get the number just bigger than ans
+			boolean flag = false;
+			int start = 0;
+			int end = AL.size()-1;
+			int sol =-1;
+			while (start <= end) {
+				int mid = (start+end)/2;
+				if(AL.get(mid)<last_char_idx) {
+					start = mid+1;
+				}
+				else {
+					sol = AL.get(mid);
+					end = mid-1;
+				}
+			}
+			if(sol == -1) {
+				last_char_idx = AL.get(0);
+				ans++;
+			}
+			else {
+				last_char_idx = sol;
+			}
+	System.out.println(ch + " - "+ last_char_idx);
 		}
-		}
+		System.out.println("ans = "+ ans);
 	}	
 	
 
