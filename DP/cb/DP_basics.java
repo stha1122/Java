@@ -43,4 +43,20 @@ public class DP_basics {
 		return dp[N];
 	}
 
+	public static int BUSE(int N) {
+		if(N<=1) {
+			return N;
+		}
+		
+		int sp1 = 0;
+		int sp2 = 1;
+		
+		for(int n=2;n<=N;n++) {
+			int curr = sp1+sp2;
+			sp1 = sp2;
+			sp2 = curr;
+		}
+		return sp2;
+	}
+
 }
